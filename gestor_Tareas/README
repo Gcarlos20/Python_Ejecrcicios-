@@ -1,0 +1,29 @@
+# Gestor de Tareas (CLI) – Python
+
+Aplicación por consola desarrollada en Python para la gestión de tareas.  
+Permite agregar, eliminar y listar tareas utilizando programación orientada a objetos, manejo de errores y módulos.
+
+## 🛠️ Tecnologías utilizadas
+- Python 3
+- Programación Orientada a Objetos (POO)
+- Manejo de errores con try / except
+- Módulos y paquetes
+- Entrada y salida de datos por consola (CLI)
+
+
+## ⚙️ Funcionalidades
+- Agregar tareas con descripción, fecha, hora y estado
+- Eliminar tareas por descripción
+- Mostrar todas las tareas registradas
+- Validación de datos de entrada
+- Manejo de errores para evitar fallos del programa
+
+## ▶️ Ejecución del programa
+Desde la carpeta raíz del proyecto ejecutar:
+
+```bash
+python -m src.main
+
+Estado del proyecto
+
+Proyecto académico en desarrollo, enfocado en reforzar lógica de programación, uso de módulos y buenas prácticas en Python.
