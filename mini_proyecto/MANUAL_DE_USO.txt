@@ -1,0 +1,284 @@
+╔══════════════════════════════════════════════════════════════════╗
+║  📚 SISTEMA DE GESTIÓN DE BIBLIOTECA - GUÍA DE USUARIO FINAL    ║
+╚══════════════════════════════════════════════════════════════════╝
+
+¡Tu sistema está 100% listo! 🎉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: ABRIR TERMINAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abre PowerShell o CMD y navega a:
+
+  cd d:\Escritorio\mini_proyecto
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 2: EJECUTAR EL PROGRAMA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPCIÓN A - Programa vacío (sin datos):
+  python app.py
+
+OPCIÓN B - Con datos de ejemplo preestablecidos:
+  python cargar_ejemplo.py
+  python app.py
+
+⭐ Te recomiendo OPCIÓN B para ver cómo funciona el sistema
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 3: USAR EL MENÚ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Una vez ejecutado, verás:
+
+  ============================================================
+  📚 SISTEMA DE GESTIÓN DE BIBLIOTECA 📚
+  ============================================================
+
+  ┌─ MENÚ PRINCIPAL ─────────────────────────────────────┐
+  │                                                      │
+  │  1. 📖 Gestionar Libros                              │
+  │  2. 👤 Gestionar Usuarios                            │
+  │  3. 🔄 Gestionar Préstamos                           │
+  │  4. 📊 Ver Estadísticas                              │
+  │  5. 🚪 Salir                                         │
+  │                                                      │
+  └──────────────────────────────────────────────────────┘
+
+  Seleccione una opción: _
+
+Simplemente escribe el número y presiona Enter
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EJEMPLO: FLUJO COMPLETO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Supongamos que quieres:
+1. Agregar un libro
+2. Registrar un usuario
+3. Prestar el libro
+4. Ver estadísticas
+
+PASO A - AGREGAR LIBRO:
+
+  Seleccione una opción: 1              (Gestionar Libros)
+  Seleccione una opción: 1              (Agregar libro)
+
+  ➕ AGREGAR NUEVO LIBRO
+  --------------------------------------------------
+  Título: El Quijote
+  Autor: Miguel de Cervantes
+  Año de publicación: 1605
+
+  ✅ Libro 'El Quijote' agregado exitosamente (ID: abc12345)
+
+PASO B - REGISTRAR USUARIO:
+
+  Seleccione una opción: 6              (Volver al menú anterior)
+  
+  Presione Enter para continuar...
+  
+  Seleccione una opción: 2              (Gestionar Usuarios)
+  Seleccione una opción: 1              (Registrar usuario)
+
+  ➕ REGISTRAR NUEVO USUARIO
+  --------------------------------------------------
+  Nombre: Juan Pérez
+  Email: juan@example.com
+
+  ✅ Usuario 'Juan Pérez' registrado exitosamente (ID: def67890)
+
+PASO C - PRESTAR LIBRO:
+
+  Seleccione una opción: 3              (Volver al menú anterior)
+  
+  Presione Enter para continuar...
+  
+  Seleccione una opción: 3              (Gestionar Préstamos)
+  Seleccione una opción: 1              (Prestar libro)
+
+  📤 PRESTAR LIBRO
+  --------------------------------------------------
+
+  📚 Libros disponibles:
+    abc12345: El Quijote - Miguel de Cervantes
+
+  Ingrese ID del libro: abc12345
+
+  👤 Usuarios registrados:
+    def67890: Juan Pérez
+
+  Ingrese ID del usuario: def67890
+
+  ✅ Libro 'El Quijote' prestado exitosamente (Préstamo ID: ghi13579)
+
+PASO D - VER ESTADÍSTICAS:
+
+  Seleccione una opción: 5              (Volver al menú principal)
+  
+  Presione Enter para continuar...
+  
+  Seleccione una opción: 4              (Ver Estadísticas)
+
+  📊 ESTADÍSTICAS DEL SISTEMA
+  ============================================================
+  📚 Total de libros: 10
+     ✅ Disponibles: 9
+     🔴 Prestados: 1
+
+  👤 Total de usuarios: 5
+
+  🔄 Total de préstamos: 1
+     🔴 Préstamos activos: 1
+     ✅ Préstamos devueltos: 0
+  ============================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPERACIONES DISPONIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 LIBROS:
+  • Agregar nuevo libro
+  • Listar todos los libros
+  • Buscar libro por título
+  • Buscar libro por autor
+  • Eliminar libro
+
+👤 USUARIOS:
+  • Registrar nuevo usuario
+  • Listar todos los usuarios
+
+🔄 PRÉSTAMOS:
+  • Prestar libro a usuario
+  • Devolver libro
+  • Ver préstamos activos
+  • Ver historial de préstamos
+
+📊 ESTADÍSTICAS:
+  • Resumen completo del sistema
+  • Libros disponibles/prestados
+  • Usuarios registrados
+  • Préstamos activos/devueltos
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INFORMACIÓN IMPORTANTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ TODO SE GUARDA AUTOMÁTICAMENTE
+   No hay que presionar ningún botón de "Guardar"
+   Los datos se guardan en archivos JSON
+
+✅ LOS DATOS PERSISTEN
+   Cuando cierres el programa, los datos se mantienen
+   La próxima vez que abras, verás los mismos datos
+
+✅ IDS AUTOMÁTICOS
+   No necesitas pensar en IDs
+   El sistema los genera automáticamente
+
+✅ VALIDACIONES AUTOMÁTICAS
+   El sistema valida que todo esté correcto
+   No puedes hacer operaciones inválidas
+
+✅ BÚSQUEDA FLEXIBLE
+   Puedes buscar "Quijo" y encontrará "Don Quijote"
+   Puedes buscar "cerv" y encontrará "Cervantes"
+   NO distingue mayúsculas/minúsculas
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SOLUCIÓN A PROBLEMAS COMUNES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+P: No aparecen datos de ejemplo
+R: Ejecuta primero: python cargar_ejemplo.py
+   Luego: python app.py
+
+P: ¿Dónde están guardados los datos?
+R: En la carpeta "data/" del proyecto:
+   - data/libros.json
+   - data/usuarios.json
+   - data/prestamos.json
+
+P: Quiero empezar de cero
+R: Elimina la carpeta "data/" y vuelve a ejecutar
+
+P: El email debe ser único, ¿qué significa?
+R: No puedes registrar dos usuarios con el mismo email.
+   Cada usuario necesita un email diferente.
+
+P: No puedo eliminar un libro
+R: Probablemente está prestado.
+   Primero devuelve el libro, luego puedes eliminarlo.
+
+P: ¿Se cierran los datos si cierra la ventana sin guardar?
+R: No, los datos se guardan automáticamente.
+   Puedes cerrar sin miedo.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DOCUMENTACIÓN DISPONIBLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+README.md
+  ├─ ¿Qué es el sistema?
+  ├─ Cómo instalar
+  ├─ Qué funcionalidades tiene
+  └─ Ejemplos básicos
+
+INICIO_RAPIDO.md
+  ├─ Guía paso a paso
+  ├─ Operaciones básicas
+  ├─ Casos de uso completos
+  ├─ Errores comunes
+  └─ Tips y trucos
+
+ARQUITECTURA.md
+  ├─ Cómo está diseñado internamente
+  ├─ Componentes principales
+  ├─ Patrones de diseño
+  └─ Detalles técnicos
+
+ESTRUCTURA.txt
+  ├─ Árbol visual del proyecto
+  ├─ Diagrama de arquitectura
+  ├─ Estructura de datos
+  └─ Componentes por módulo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EJECUTAR TESTS (OPCIONAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si quieres verificar que todo funciona correctamente:
+
+  python tests.py
+
+Esto ejecutará 11 tests unitarios y mostrará resultados como:
+
+  ✅ test_modelo_libro PASÓ
+  ✅ test_modelo_usuario PASÓ
+  ✅ test_validador_email PASÓ
+  ...
+  ✅ Pasados: 11 | ❌ Fallidos: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¡LISTO PARA USAR!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tu sistema está completamente funcional.
+
+Próximo paso:
+  cd d:\Escritorio\mini_proyecto
+  python cargar_ejemplo.py
+  python app.py
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

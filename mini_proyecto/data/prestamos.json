@@ -1,0 +1,26 @@
+[
+  {
+    "id": "e6bcf3ce",
+    "libro_id": "8ea73971",
+    "usuario_id": "255d7be2",
+    "fecha_prestamo": "2026-02-04T19:09:54.632285",
+    "fecha_devolucion": null,
+    "estado": "activo"
+  },
+  {
+    "id": "b8b799c1",
+    "libro_id": "14353368",
+    "usuario_id": "e6c0b356",
+    "fecha_prestamo": "2026-02-04T19:09:54.635288",
+    "fecha_devolucion": null,
+    "estado": "activo"
+  },
+  {
+    "id": "2f28bf1d",
+    "libro_id": "68e9e3e9",
+    "usuario_id": "9ee56180",
+    "fecha_prestamo": "2026-02-04T19:09:54.637288",
+    "fecha_devolucion": null,
+    "estado": "activo"
+  }
+]

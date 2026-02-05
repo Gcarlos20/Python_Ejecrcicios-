@@ -1,0 +1,6 @@
+# Requisitos del Proyecto
+
+# No hay dependencias externas
+# El proyecto utiliza solo la librería estándar de Python
+
+# Versión mínima de Python requerida: 3.7+

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "8ea73971",
+    "titulo": "Don Quijote",
+    "autor": "Miguel de Cervantes",
+    "año": 1605,
+    "estado": "prestado",
+    "fecha_creacion": "2026-02-04T19:09:54.617531"
+  },
+  {
+    "id": "14353368",
+    "titulo": "El Quijote Parte II",
+    "autor": "Miguel de Cervantes",
+    "año": 1615,
+    "estado": "prestado",
+    "fecha_creacion": "2026-02-04T19:09:54.618484"
+  },
+  {
+    "id": "68e9e3e9",
+    "titulo": "Orgullo y Prejuicio",
+    "autor": "Jane Austen",
+    "año": 1813,
+    "estado": "prestado",
+    "fecha_creacion": "2026-02-04T19:09:54.619277"
+  },
+  {
+    "id": "4f478317",
+    "titulo": "Cien Años de Soledad",
+    "autor": "Gabriel García Márquez",
+    "año": 1967,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:09:54.619277"
+  },
+  {
+    "id": "f9ebae27",
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "año": 1949,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:09:54.620297"
+  },
+  {
+    "id": "5c52376a",
+    "titulo": "El Principito",
+    "autor": "Antoine de Saint-Exupéry",
+    "año": 1943,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:09:54.621287"
+  },
+  {
+    "id": "bc22616a",
+    "titulo": "Mujercitas",
+    "autor": "Louisa May Alcott",
+    "año": 1868,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:09:54.622355"
+  },
+  {
+    "id": "a8aa7f94",
+    "titulo": "El Conde de Montecristo",
+    "autor": "Alexandre Dumas",
+    "año": 1844,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:09:54.624290"
+  },
+  {
+    "id": "ed9fbbdc",
+    "titulo": "Crimen y Castigo",
+    "autor": "Fiódor Dostoyevski",
+    "año": 1866,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:09:54.625321"
+  },
+  {
+    "id": "c2f1f98e",
+    "titulo": "cien años de soledad",
+    "autor": "gabriel Garcia",
+    "año": 1923,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T19:10:58.623957"
+  }
+]

@@ -1,0 +1,366 @@
+╔════════════════════════════════════════════════════════════════╗
+║     📚 SISTEMA DE GESTIÓN DE BIBLIOTECA - ESTRUCTURA            ║
+║            Arquitectura Limpia en Python                         ║
+╚════════════════════════════════════════════════════════════════╝
+
+📁 ÁRBOL DEL PROYECTO
+════════════════════════════════════════════════════════════════
+
+mini_proyecto/
+│
+├── 📄 app.py ........................ PUNTO DE ENTRADA PRINCIPAL
+├── 📄 cargar_ejemplo.py ............ Script para datos de ejemplo
+├── 📄 tests.py ..................... Tests unitarios (11 tests)
+├── 📄 requirements.txt ............. Dependencias (ninguna)
+│
+├── 📖 README.md .................... Documentación general
+├── 📖 ARQUITECTURA.md .............. Guía arquitectónica
+├── 📖 INICIO_RAPIDO.md ............ Guía rápida de inicio
+├── 📖 PROYECTO_RESUMEN.txt ........ Este resumen
+│
+├── 📁 src/
+│   ├── 📄 __init__.py
+│   ├── 📄 main.py ................. Inicialización del sistema
+│   │
+│   ├── 📁 domain/
+│   │   ├── 📄 __init__.py
+│   │   └── 📄 models.py ........... Entidades del dominio
+│   │       ├── Libro
+│   │       ├── Usuario
+│   │       └── Préstamo
+│   │
+│   ├── 📁 repository/
+│   │   ├── 📄 __init__.py
+│   │   ├── 📄 base_repository.py .. Clase abstracta base
+│   │   ├── 📄 libro_repository.py . CRUD de libros + búsquedas
+│   │   ├── 📄 usuario_repository.py CRUD de usuarios
+│   │   └── 📄 prestamo_repository.py CRUD de préstamos
+│   │
+│   ├── 📁 service/
+│   │   ├── 📄 __init__.py
+│   │   ├── 📄 libro_service.py .... Lógica de negocio (libros)
+│   │   ├── 📄 usuario_service.py .. Lógica de negocio (usuarios)
+│   │   └── 📄 prestamo_service.py . Lógica de negocio (préstamos)
+│   │
+│   ├── 📁 ui/
+│   │   ├── 📄 __init__.py
+│   │   └── 📄 cli.py .............. Interfaz CLI (menús, input)
+│   │
+│   └── 📁 utils/
+│       ├── 📄 __init__.py
+│       └── 📄 validaciones.py .... Validaciones reutilizables
+│
+└── 📁 data/ ........................ Creada automáticamente
+    ├── 📄 libros.json ............. Base de datos de libros
+    ├── 📄 usuarios.json ........... Base de datos de usuarios
+    └── 📄 prestamos.json ......... Base de datos de préstamos
+
+
+🏗️ ARQUITECTURA EN CAPAS
+════════════════════════════════════════════════════════════════
+
+                    ┌─────────────────────┐
+                    │   INTERFAZ (CLI)    │
+                    │ BibliotecaCLI       │
+                    │ - Menús             │
+                    │ - Input/Output      │
+                    │ - Navegación        │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │  SERVICIOS (Logic)  │
+                    │ LibroService        │
+                    │ UsuarioService      │
+                    │ PrestamoService     │
+                    │ - Validaciones      │
+                    │ - Reglas negocio    │
+                    │ - Orquestación      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ REPOSITORIOS (Data) │
+                    │ LibroRepository     │
+                    │ UsuarioRepository   │
+                    │ PrestamoRepository  │
+                    │ - CRUD              │
+                    │ - JSON persistence  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ DOMINIO (Modelos)   │
+                    │ Libro               │
+                    │ Usuario             │
+                    │ Préstamo            │
+                    │ - Entidades puras   │
+                    └─────────────────────┘
+
+
+🔄 FLUJO DE DATOS - EJEMPLO: PRESTAR LIBRO
+════════════════════════════════════════════════════════════════
+
+Usuario selecciona "Prestar libro"
+       │
+       ▼
+CLI.prestar_libro()
+       │
+       ├─► Mostrar libros disponibles
+       │   └─► LibroService.obtener_disponibles()
+       │       └─► LibroRepository.obtener_disponibles()
+       │           └─► Leer JSON
+       │
+       ├─► Solicitar ID de libro y usuario
+       │
+       └─► PrestamoService.prestar_libro(libro_id, usuario_id)
+           │
+           ├─► Validar libro existe
+           │   └─► LibroRepository.obtener_por_id()
+           │
+           ├─► Validar libro disponible
+           │   └─► Revisar estado == "disponible"
+           │
+           ├─► Validar no hay préstamo activo
+           │   └─► PrestamoRepository.obtener_prestamo_libro_activo()
+           │
+           ├─► CREAR PRÉSTAMO
+           │   └─► PrestamoRepository.crear()
+           │       └─► Generar UUID
+           │       └─► Guardar en JSON
+           │
+           └─► ACTUALIZAR LIBRO
+               └─► LibroRepository.actualizar(estado='prestado')
+                   └─► Actualizar en JSON
+
+
+📊 ESTRUCTURA DE DATOS
+════════════════════════════════════════════════════════════════
+
+libros.json:
+[
+  {
+    "id": "a1b2c3d4",
+    "titulo": "Don Quijote",
+    "autor": "Cervantes",
+    "año": 1605,
+    "estado": "disponible",
+    "fecha_creacion": "2026-02-04T..."
+  }
+]
+
+usuarios.json:
+[
+  {
+    "id": "e5f6g7h8",
+    "nombre": "Juan Pérez",
+    "email": "juan@example.com",
+    "fecha_registro": "2026-02-04T..."
+  }
+]
+
+prestamos.json:
+[
+  {
+    "id": "p1q2r3s4",
+    "libro_id": "a1b2c3d4",
+    "usuario_id": "e5f6g7h8",
+    "fecha_prestamo": "2026-02-04T...",
+    "fecha_devolucion": null,
+    "estado": "activo"
+  }
+]
+
+
+✨ CARACTERÍSTICAS POR COMPONENTE
+════════════════════════════════════════════════════════════════
+
+DOMAIN (models.py):
+  • Libro(id, titulo, autor, año, estado, fecha_creacion)
+  • Usuario(id, nombre, email, fecha_registro)
+  • Préstamo(id, libro_id, usuario_id, fecha_prestamo, estado)
+  • Métodos: to_dict(), from_dict()
+
+REPOSITORY:
+  • BaseRepository: _cargar(), _guardar(), métodos abstractos
+  • LibroRepository: crear, obtener_todos, obtener_por_id,
+    buscar_por_titulo, buscar_por_autor, obtener_disponibles
+  • UsuarioRepository: crear, obtener_todos, obtener_por_id,
+    obtener_por_email
+  • PrestamoRepository: crear, obtener_todos, obtener_por_id,
+    obtener_prestamos_activos, obtener_prestamo_libro_activo
+
+SERVICE:
+  • LibroService: agregar_libro, listar_libros, buscar,
+    eliminar_libro, obtener_disponibles
+  • UsuarioService: registrar_usuario, listar_usuarios,
+    obtener_usuario, obtener_por_email
+  • PrestamoService: prestar_libro, devolver_libro,
+    listar_prestamos_activos, listar_todos_prestamos
+
+UI (cli.py):
+  • BibliotecaCLI: ejecutar(), gestion_libros(),
+    gestion_usuarios(), gestion_prestamos(),
+    mostrar_estadisticas()
+  • Menús intuitivos con bordes ASCII
+  • Tablas formateadas
+  • Iconos emoji para mejor UX
+
+UTILS (validaciones.py):
+  • validar_email(): Regex pattern
+  • validar_titulo(): Longitud mínima
+  • validar_autor(): Longitud mínima
+  • validar_año(): Rango numérico
+  • validar_nombre(): Longitud mínima
+  • Retorna: Tuple[bool, str]
+
+
+🎯 FUNCIONALIDADES IMPLEMENTADAS
+════════════════════════════════════════════════════════════════
+
+LIBROS:
+  ✅ Agregar (título, autor, año)
+  ✅ Listar todos
+  ✅ Buscar por título (parcial)
+  ✅ Buscar por autor (parcial)
+  ✅ Eliminar (si no está prestado)
+  ✅ Ver estado (disponible/prestado)
+
+USUARIOS:
+  ✅ Registrar (nombre, email)
+  ✅ Listar todos
+  ✅ Validar email único
+  ✅ Validar formato email
+
+PRÉSTAMOS:
+  ✅ Prestar libro
+  ✅ Devolver libro
+  ✅ Evitar prestar libro no disponible
+  ✅ Evitar prestar libro ya prestado
+  ✅ Ver préstamos activos
+  ✅ Ver historial (activos + devueltos)
+  ✅ Registrar fechas
+
+ESTADÍSTICAS:
+  ✅ Libros disponibles vs prestados
+  ✅ Total de usuarios
+  ✅ Préstamos activos vs devueltos
+  ✅ Tablero resumen
+
+PERSISTENCIA:
+  ✅ Guardar automáticamente
+  ✅ Cargar al iniciar
+  ✅ Crear directorios automáticamente
+  ✅ Encoding UTF-8
+
+
+🛡️ VALIDACIONES
+════════════════════════════════════════════════════════════════
+
+INPUT:
+  • Email: Formato válido (usuario@dominio.com)
+  • Título: Mínimo 3 caracteres
+  • Autor: Mínimo 3 caracteres
+  • Año: Entre 1000 y 2100
+  • Nombre: Mínimo 3 caracteres
+
+LÓGICA DE NEGOCIO:
+  • Email único (no duplicados)
+  • No eliminar libros prestados
+  • No prestar libros no disponibles
+  • No prestar mismo libro 2 veces
+  • No devolver préstamos devueltos
+  • Actualizar estado automáticamente
+
+
+🚀 INICIO RÁPIDO
+════════════════════════════════════════════════════════════════
+
+Opción 1 - Sin datos:
+  > cd d:\Escritorio\mini_proyecto
+  > python app.py
+
+Opción 2 - Con datos ejemplo:
+  > cd d:\Escritorio\mini_proyecto
+  > python cargar_ejemplo.py
+  > python app.py
+
+Tests unitarios:
+  > python tests.py
+
+
+📚 DOCUMENTACIÓN
+════════════════════════════════════════════════════════════════
+
+README.md:
+  • Descripción general
+  • Funcionalidades
+  • Instalación
+  • Ejemplos de uso
+
+ARQUITECTURA.md:
+  • Diagrama de capas
+  • Descripción de componentes
+  • Flujos de datos
+  • Patrones implementados
+  • Detalles técnicos
+
+INICIO_RAPIDO.md:
+  • Guía paso a paso
+  • Operaciones básicas
+  • Casos de uso
+  • Errores comunes
+  • Tips y trucos
+
+PROYECTO_RESUMEN.txt:
+  • Resumen ejecutivo
+  • Contenido del proyecto
+  • Lista de características
+
+
+✅ REQUISITOS
+════════════════════════════════════════════════════════════════
+
+• Python 3.7+
+• SIN DEPENDENCIAS EXTERNAS
+• ~50 KB espacio en disco
+• Windows / Linux / macOS
+
+
+🎓 PATRONES DE DISEÑO
+════════════════════════════════════════════════════════════════
+
+✓ Repository Pattern
+✓ Service Layer
+✓ Dependency Injection
+✓ Abstract Base Class
+✓ Dataclasses
+✓ Tuple Unpacking
+
+
+🧪 TESTS INCLUIDOS
+════════════════════════════════════════════════════════════════
+
+tests.py contiene 11 tests unitarios:
+
+  1. test_modelo_libro()
+  2. test_modelo_usuario()
+  3. test_validador_email()
+  4. test_validador_año()
+  5. test_validador_titulo()
+  6. test_repository_crear_y_obtener()
+  7. test_service_agregar_libro_valido()
+  8. test_service_agregar_libro_invalido()
+  9. test_usuario_email_unico()
+  10. test_prestamo_flujo_completo()
+  11. test_no_prestar_libro_prestado()
+
+
+═══════════════════════════════════════════════════════════════════
+
+                   ¡PROYECTO COMPLETADO! ✅
+
+          Versión: 1.0 | Estado: Producción
+          Fecha: 4 de Febrero de 2026
+
+═══════════════════════════════════════════════════════════════════
