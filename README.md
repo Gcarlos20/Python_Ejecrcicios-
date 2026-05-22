@@ -1,4 +1,3 @@
-# Python_Ejecrcicios-
-ejercicios de python
-vamos por un mejor futuro
-
+# Python_Ejecrcicios + aprendizaje#
+Repositorio dedicado a la documentacion de ejercicios 
+y aprendizaje continuo.
